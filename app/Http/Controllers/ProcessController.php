@@ -10,7 +10,6 @@ class ProcessController extends Controller
 {
     
     public function insert(Request $request){
-        $flag = 0;
         if($request){
             if($validatedData = $request->validate([
                 'name' => ['required'],
@@ -46,14 +45,11 @@ class ProcessController extends Controller
                 $model->expected_earning = $expectedSalary;
 
                 if($model->save()){
-                    $flag = 1;
+                    return redirect()->action(
+                        'ProcessController@index'
+                    );
                 }
             }
-        }
-        if($flag == 1){
-            $flag = 0;
-            $data = Employee::all();
-            return view('user.profile',compact('data'));
         }
         
     }

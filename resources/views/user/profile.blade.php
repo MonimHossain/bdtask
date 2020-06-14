@@ -45,7 +45,7 @@ th, td {
         </tr>
         @foreach($data as $value)
         <tr>
-            <td>{{$value['id']}}</td>
+            <td>{{$loop->iteration}}</td>
             <td>{{$value['name']}}</td>
             <td>{{$value['email']}}</td>
             <td>{{$value['salary']}}</td>
